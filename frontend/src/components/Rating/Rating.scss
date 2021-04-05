@@ -1,0 +1,14 @@
+
+.rating {
+    span {
+        padding: 0 .2rem;
+    }
+
+    &__numReview {
+        
+        strong {
+            font-size: 16px;
+            margin: 0 .5rem;
+        }
+    }
+}

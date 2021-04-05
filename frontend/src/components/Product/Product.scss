@@ -1,0 +1,18 @@
+
+
+.product {
+    font-size: 12px;
+    strong {
+        color: #000;
+    }
+
+    div {
+        padding: .4rem 0;
+    }
+
+    &__price {
+        span {
+            font-size: 17px;
+        }
+    }
+}

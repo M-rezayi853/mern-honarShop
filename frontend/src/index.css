@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+@font-face {
+  font-family: 'IranYekan';
+  src: url('./fonts/IRYekan/IRYekan.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/IRYekan/IRYekan.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./fonts/IRYekan/IRYekan.woff') format('woff'), /* Pretty Modern Browsers */
+    url('./fonts/IRYekan/IRYekan.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('./fonts/IRYekan/IRYekan.png') format('png'); /* Legacy iOS */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'IranSans';
+  src: url('./fonts/IRSans/irsans.woff'); /* IE9 Compat Modes */
+  src: url('./fonts/IRSans/irsans.woff') format('woff'), /* Pretty Modern Browsers */
+    url('./fonts/IRSans/irsansb.woff') format('woff'), /* Pretty Modern Browsers */
+}
+
+html,
+body {
+  unicode-bidi: bidi-override !important;
+  direction: unset !important;
+  text-align:right !important;
+  direction: rtl !important;
+  font-family: 'IranYekan' !important;
+  font-size: 13px;
+}
+
+body {
+  background-color: #fdfdfd !important;
+}
+
+main {
+  min-height: 70vh;
 }

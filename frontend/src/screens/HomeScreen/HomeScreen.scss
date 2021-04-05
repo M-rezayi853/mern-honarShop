@@ -1,0 +1,11 @@
+@import '../../sass/variables';
+
+.homeScreen {
+    &__text1 {
+        font-family: $font-primary-ir-yekan;
+    }
+
+    &__text2 {
+        font-family: $font-primary-ir-sans;
+    }
+}

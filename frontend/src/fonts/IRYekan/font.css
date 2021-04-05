@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'IRYekan';
+	src: url('./IRYekan.eot');
+	src: local('IRYekan'), url('./IRYekan.woff') format('woff'), url('./IRYekan.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_49094">Text with this font applied</p> */
+.fontsforweb_fontid_49094 {
+	font-family: 'IRYekan' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */

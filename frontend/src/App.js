@@ -1,16 +1,27 @@
 import React from 'react';
-
 import { Container } from 'react-bootstrap';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import HomeScreen from './screens/HomeScreen/HomeScreen';
+import ProductScreen from './screens/ProductScreen/ProductScreen';
+import './App.scss';
+import './sass/custom.scss';
 
 function App() {
-  return <>
-    <Container>
-      <h1>
-        Hello Word!
-      </h1>  
-    </Container>
-  </>;
+  return (
+    <Router>
+      <Header />
+      <main>
+        <Container>
+          <Route path='/' component={HomeScreen} exact />
+          <Route path='/product/:id' component={ProductScreen} />
+        </Container>
+      </main>
+      <Footer />
+    </Router>
+  )
 }
 
 export default App;

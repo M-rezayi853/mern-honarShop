@@ -1,0 +1,17 @@
+
+.productScreen {
+
+    &__price {
+        span {
+            font-size: 30px;
+            padding: 0 .5rem;
+        }
+    }
+
+    &__otherPrice {
+
+        span {
+            font-size: 18px;
+        }
+    }
+}
