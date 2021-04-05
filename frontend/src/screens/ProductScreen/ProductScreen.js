@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 import Rating from '../../components/Rating/Rating';
-import products from '../../products';
+// import products from '../../products';
 import './ProductScreen.scss';
 
 const ProductScreen = ({ match }) => {
-    const product = products.find(p => p._id === match.params.id);
+    // const product = products.find(p => p._id === match.params.id);
+    const [product, setProduct] = useState({});
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const { data } = await axios.get(`/api/products/${match.params.id}`);
+
+            setProduct(data);
+        }
+
+        fetchProduct();
+    }, [match]);
 
     return (
         <div className='productScreen'>
@@ -19,7 +31,7 @@ const ProductScreen = ({ match }) => {
                 </Col>
 
                 <Col md={3} className='text-center'>
-                    <ListGroup variant='flush'>
+                    <ListGroup >
                         <ListGroup.Item>
                             <h4>{product.name}</h4>
                         </ListGroup.Item>
