@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
-// import axios from 'axios';
+import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Rating from '../../components/Rating/Rating';
-// import products from '../../products';
 import Loader from '../../components/Loader/Loader';
 import Message from '../../components/Message/Message';
 import { detailProduct } from '../../redux/actions/productActions';
 import './ProductScreen.scss';
 
-const ProductScreen = ({ match }) => {
-    // const product = products.find(p => p._id === match.params.id);
-    // const [product, setProduct] = useState({});
+const ProductScreen = ({ match, history }) => {
+    const [qty, setQty] = useState(1);
 
     const dispatch = useDispatch();
 
@@ -21,15 +18,12 @@ const ProductScreen = ({ match }) => {
     const { error, loading, product } = productDetail;
 
     useEffect(() => {
-        // const fetchProduct = async () => {
-        //     const { data } = await axios.get(`/api/products/${match.params.id}`);
-
-        //     setProduct(data);
-        // }
-        // fetchProduct();
-
         dispatch(detailProduct(match.params.id));
     }, [dispatch, match]);
+
+    const addToCartHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`);
+    }
 
     return (
         <div className='productScreen'>
@@ -42,7 +36,7 @@ const ProductScreen = ({ match }) => {
                     </Col>
 
                     <Col md={3} className='text-center'>
-                        <ListGroup >
+                        <ListGroup className='my-2'>
                             <ListGroup.Item>
                                 <h4>{product.name}</h4>
                             </ListGroup.Item>
@@ -84,7 +78,35 @@ const ProductScreen = ({ match }) => {
                                 </ListGroup.Item>
 
                                 <ListGroup.Item>
-                                    <Button variant='success' className='btn-block py-3' type='button' disabled={product.countInStock === 0}>
+                                    <Row>
+                                        <Col>
+                                            تعداد:
+                                        </Col>
+                                        <Col>
+                                            <Form.Control
+                                                as='select'
+                                                value={qty}
+                                                onChange={e => setQty(e.target.value)}
+                                            >
+                                                {[...Array(product.countInStock).keys()].map(x => (
+                                                    <option key={x + 1} value={x + 1}>
+                                                        {x + 1}
+                                                    </option>
+                                                ))}
+                                            </Form.Control>
+                                        </Col>
+                                    </Row>
+                                </ListGroup.Item>
+
+                                <ListGroup.Item>
+                                    <Button 
+                                        variant='success' 
+                                        className='py-3'
+                                        block
+                                        type='button' 
+                                        disabled={product.countInStock === 0}
+                                        onClick={addToCartHandler}
+                                    >
                                         افزودن به سبد خرید
                                     </Button>
                                 </ListGroup.Item>

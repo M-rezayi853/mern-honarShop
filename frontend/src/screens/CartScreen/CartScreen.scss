@@ -1,0 +1,25 @@
+
+.cartScreen {
+
+    &__name {
+        color: #000;
+    }
+
+    &__num {
+        span {
+            font-size: 16px;
+        }
+    }
+
+    &__count {
+        span {
+            font-size: 28px;
+        }
+    }
+
+    &__price {
+        span {
+            font-size: 22px;
+        }
+    }
+}
