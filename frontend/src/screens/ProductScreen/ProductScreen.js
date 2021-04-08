@@ -25,27 +25,35 @@ const ProductScreen = ({ match, history }) => {
         history.push(`/cart/${match.params.id}?qty=${qty}`);
     }
 
+    // eslint-disable-next-line
+    String.prototype.toPersinaDigit= function() {
+        var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+        return this.replace(/[0-9]/g, function(w) {
+            return id[+w]
+        });
+    }
+
     return (
         <div className='productScreen'>
-            <Link className='btn btn-light my-3 py-3' to='/'>برگشت به صفحه قبل</Link>
+            <Link className='btn btn-light py-3 mb-3' to='/'>برگشت به صفحه قبل</Link>
             
             {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
                 <Row>
-                    <Col md={6}>
+                    <Col md={5}>
                         <Image src={product.image} alt={product.name} fluid />
                     </Col>
 
-                    <Col md={3} className='text-center'>
+                    <Col md={4} className='text-center'>
                         <ListGroup className='my-2'>
                             <ListGroup.Item>
-                                <h4>{product.name}</h4>
+                                <h5>{product.name}</h5>
                             </ListGroup.Item>
                         </ListGroup>
                         <ListGroup.Item>
                             <Rating value={product.rating} text={product.numReviews} />
                         </ListGroup.Item>
-                        <ListGroup.Item className='productScreen productScreen__price'>
-                            قیمت: <span>{product.price}</span> تومان
+                        <ListGroup.Item>
+                            قیمت: <span>{String(product.price).toPersinaDigit()}</span> تومان
                         </ListGroup.Item>
                         <ListGroup.Item>
                             توضیحات محصول: {product.description}
@@ -60,8 +68,8 @@ const ProductScreen = ({ match, history }) => {
                                         <Col>
                                             قیمت:
                                         </Col>
-                                        <Col className='productScreen productScreen__otherPrice'>
-                                            <span>{product.price}</span> تومان
+                                        <Col>
+                                            <span>{String(product.price).toPersinaDigit()}</span> تومان
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -101,7 +109,7 @@ const ProductScreen = ({ match, history }) => {
                                 <ListGroup.Item>
                                     <Button 
                                         variant='success' 
-                                        className='py-3'
+                                        className='py-2'
                                         block
                                         type='button' 
                                         disabled={product.countInStock === 0}

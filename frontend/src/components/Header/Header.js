@@ -1,12 +1,23 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { logoutUser } from '../../redux/actions/userActions';
 import './Header.scss';
 
 const Header = () => {
+    const dispatch = useDispatch();
+
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+
+    const logoutHandler = () => {
+        dispatch(logoutUser());
+    }
+
     return (
-        <header>
+        <header className='mb-5'>
             <Navbar className='header' bg='primary' variant='light' expand='md'>
                 <Container>
                     <LinkContainer to='/'>
@@ -18,9 +29,20 @@ const Header = () => {
                             <LinkContainer to='/cart'>
                                 <Nav.Link><i className='fas fa-shopping-cart'></i> &nbsp;<span>لیست خرید</span></Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to='/login'>
-                                <Nav.Link><i className='fas fa-user'></i> &nbsp;<span>ورود به حساب</span></Nav.Link>
-                            </LinkContainer>
+
+                            {userInfo ? (
+                                <NavDropdown title={userInfo.name} id='username'>
+                                    <LinkContainer to='/profile'>
+                                        <NavDropdown.Item eventKey='1'>پروفایل</NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <NavDropdown.Item eventKey='2' onClick={logoutHandler}>خروج از حساب کاربری</NavDropdown.Item>
+                                </NavDropdown>
+                            ) : (
+                                <LinkContainer to='/login'>
+                                    <Nav.Link><i className='fas fa-user'></i> &nbsp;<span>ورود به حساب</span></Nav.Link>
+                                </LinkContainer>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

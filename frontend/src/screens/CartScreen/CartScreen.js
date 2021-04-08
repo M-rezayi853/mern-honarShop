@@ -31,13 +31,32 @@ const CartScreen = ({ match, location, history }) => {
         history.push('/login?redirect=shipping');
     }
 
+    // String.prototype.toEnglishDigit = function() {
+    //     var find = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    //     var replace = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    //     var replaceString = this; var regex;
+    //     for (var i = 0; i < find.length; i++) {
+    //         regex = new RegExp(find[i], "g");
+    //         replaceString = replaceString.replace(regex, replace[i]);
+    //     }
+    //     return replaceString;
+    // };
+
+    // eslint-disable-next-line
+    String.prototype.toPersinaDigit= function() {
+        var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+        return this.replace(/[0-9]/g, function(w) {
+            return id[+w]
+        });
+    }
+
     return (
         <Row className='my-5 cartScreen'>
             <Col md={8}>
-                <h1 className='pb-5'>سبد خرید</h1>
+                <h2>سبد خرید</h2>
 
                 {cartItems.length === 0 ? <Message variant='info'>سبد خرید شما خالی است</Message> : (
-                    <ListGroup variant='flush' className='text-center'>
+                    <ListGroup variant='flush' className='text-center my-3'>
                         {cartItems.map(item => (
                             <ListGroup.Item key={item.product} className='my-2'>
                                 <Row className='d-flex align-items-center'>
@@ -52,7 +71,7 @@ const CartScreen = ({ match, location, history }) => {
                                     </Col>
 
                                     <Col md={2} className='cartScreen cartScreen__num'>
-                                        <span>{item.price}&nbsp;</span> تومان
+                                        <span>{String(item.price).toPersinaDigit()}&nbsp;</span> تومان
                                     </Col>
 
                                     <Col md={2}>
@@ -88,15 +107,15 @@ const CartScreen = ({ match, location, history }) => {
                 <Card>
                     <ListGroup variant='flush' >
                         <ListGroup.Item className='py-5'>
-                            <h4 className='py-3 cartScreen cartScreen__count'>جمع سبد خرید <span>{cartItems.reduce((acc, item) => acc + item.qty , 0)}</span> مورد</h4>
-                            <h5 className='py-3 cartScreen cartScreen__price'><span>{cartItems.reduce((acc, item) => acc + item.qty * item.price , 0)}&nbsp;</span> تومان</h5>
+                            <h5 className='py-2'>جمع سبد خرید <span>{String(cartItems.reduce((acc, item) => acc + item.qty , 0)).toPersinaDigit()}</span> مورد</h5>
+                            <h5 className='py-1'><span>{String(cartItems.reduce((acc, item) => acc + item.qty * item.price , 0)).toPersinaDigit()}&nbsp;</span> تومان</h5>
                         </ListGroup.Item>
 
                         <ListGroup.Item>
                             <Button 
                                 type='button'
                                 variant='success'
-                                className='py-3'
+                                className='py-2'
                                 block
                                 disabled={cartItems.length === 0}
                                 onClick={checkoutHandler}

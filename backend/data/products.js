@@ -5,7 +5,7 @@ const products = [
         image: '/images/eslimi-1.jpeg',
         description: 'گردنبند از جنس نقره اب کاری شده همراه با نگین فیروزه نیشابور',
         category: 'اسلیمی',
-        price: 580,
+        price: 500,
         countInStock: 20,
         rating: 5,
         numReviews: 120

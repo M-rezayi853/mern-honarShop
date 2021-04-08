@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './Footer.scss';
 
@@ -8,11 +9,11 @@ const Footer = () => {
         <footer className='footer'>
             <Container>
                 <Row className='text-center'>
-                    <Col>نحوه ثبت سفارش</Col>
-                    <Col>پاسخ به پرسش‌های متداول</Col>
-                    <Col>حریم خصوصی</Col>
-                    <Col>درباره هنرشاپ</Col>
-                    <Col>فروش در هنرشاپ</Col>
+                    <Col><Link to='#'>نحوه ثبت سفارش</Link></Col>
+                    <Col><Link to='#'>پاسخ به پرسش‌های متداول</Link></Col>
+                    <Col><Link to='#'>حریم خصوصی</Link></Col>
+                    <Col><Link to='#'>درباره هنرشاپ</Link></Col>
+                    <Col><Link to='#'>فروش در هنرشاپ</Link></Col>
                 </Row>
                 <Row>
                     <Col className='text-center'>

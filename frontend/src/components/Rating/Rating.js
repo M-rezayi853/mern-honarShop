@@ -3,6 +3,14 @@ import React from 'react';
 import './Rating.scss';
 
 const Rating = ({ value, text, color }) => {
+    // eslint-disable-next-line
+    String.prototype.toPersinaDigit= function() {
+        var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+        return this.replace(/[0-9]/g, function(w) {
+            return id[+w]
+        });
+    }
+
     return (
         <div className='rating' dir='ltr'>
             <span>
@@ -62,7 +70,7 @@ const Rating = ({ value, text, color }) => {
             </span>
 
             <span className='rating rating__numReview'>
-                <strong>{text && text}</strong> نظر خریدارن
+                <strong>{String(text && text).toPersinaDigit()}</strong> نظر خریدارن
             </span>
         </div>
     )

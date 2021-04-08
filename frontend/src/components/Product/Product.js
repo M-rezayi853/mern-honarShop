@@ -6,6 +6,14 @@ import Rating from '../Rating/Rating';
 import './Product.scss';
 
 const Product = ({ product }) => {
+    // eslint-disable-next-line
+    String.prototype.toPersinaDigit= function() {
+        var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+        return this.replace(/[0-9]/g, function(w) {
+            return id[+w]
+        });
+    }
+
     return (
         <Card className='product my-3 p-3 text-center'>
             <Link to={`/product/${product._id}`}>
@@ -23,8 +31,8 @@ const Product = ({ product }) => {
                     <Rating value={product.rating} text={product.numReviews} />
                 </Card.Text>
 
-                <Card.Text as='h3' className='product product__price text-center'>
-                    <span>{product.price}</span> تومان
+                <Card.Text as='h6' className='text-center'>
+                    <span>{String(product.price).toPersinaDigit()}</span> تومان
                 </Card.Text>
             </Card.Body>
         </Card>
