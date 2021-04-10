@@ -32,7 +32,7 @@ const Product = ({ product }) => {
                 </Card.Text>
 
                 <Card.Text as='h6' className='text-center'>
-                    <span>{String(product.price).toPersinaDigit()}</span> تومان
+                    <span>{`${product.price},000`.toPersinaDigit()}</span> تومان
                 </Card.Text>
             </Card.Body>
         </Card>

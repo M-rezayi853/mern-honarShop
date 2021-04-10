@@ -10,6 +10,9 @@ import CartScreen from './screens/CartScreen/CartScreen';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
+import ShippingScreen from './screens/ShippingScreen/ShippingScreen';
+import PaymentScreen from './screens/PaymentScreen/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen/PlaceOrderScreen';
 import './App.scss';
 import './sass/custom.scss';
 
@@ -25,6 +28,9 @@ function App() {
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen} />
           <Route path='/profile' component={ProfileScreen} />
+          <Route path='/shipping' component={ShippingScreen} />
+          <Route path='/payment' component={PaymentScreen} />
+          <Route path='/placeorder' component={PlaceOrderScreen} />
         </Container>
       </main>
       <Footer />

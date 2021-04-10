@@ -71,7 +71,7 @@ const CartScreen = ({ match, location, history }) => {
                                     </Col>
 
                                     <Col md={2} className='cartScreen cartScreen__num'>
-                                        <span>{String(item.price).toPersinaDigit()}&nbsp;</span> تومان
+                                        <span>{`${item.price},000`.toPersinaDigit()}&nbsp;</span> تومان
                                     </Col>
 
                                     <Col md={2}>
@@ -107,8 +107,8 @@ const CartScreen = ({ match, location, history }) => {
                 <Card>
                     <ListGroup variant='flush' >
                         <ListGroup.Item className='py-5'>
-                            <h5 className='py-2'>جمع سبد خرید <span>{String(cartItems.reduce((acc, item) => acc + item.qty , 0)).toPersinaDigit()}</span> مورد</h5>
-                            <h5 className='py-1'><span>{String(cartItems.reduce((acc, item) => acc + item.qty * item.price , 0)).toPersinaDigit()}&nbsp;</span> تومان</h5>
+                            <h5 className='py-2'>جمع سبد خرید <span>{`${cartItems.reduce((acc, item) => acc + item.qty , 0)}`.toPersinaDigit()}</span> مورد</h5>
+                            <h5 className='py-1'><span>{`${cartItems.reduce((acc, item) => acc + item.qty * item.price , 0)},000`.toPersinaDigit()}&nbsp;</span> تومان</h5>
                         </ListGroup.Item>
 
                         <ListGroup.Item>

@@ -53,7 +53,7 @@ const ProductScreen = ({ match, history }) => {
                             <Rating value={product.rating} text={product.numReviews} />
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            قیمت: <span>{String(product.price).toPersinaDigit()}</span> تومان
+                            قیمت: <span>{`${product.price},000`.toPersinaDigit()}</span> تومان
                         </ListGroup.Item>
                         <ListGroup.Item>
                             توضیحات محصول: {product.description}
@@ -69,7 +69,7 @@ const ProductScreen = ({ match, history }) => {
                                             قیمت:
                                         </Col>
                                         <Col>
-                                            <span>{String(product.price).toPersinaDigit()}</span> تومان
+                                            <span>{`${product.price},000`.toPersinaDigit()}</span> تومان
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
