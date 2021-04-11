@@ -47,7 +47,7 @@ const PaymentScreen = ({ history }) => {
                                 checked
                             ></Form.Check>
 
-                            <Form.Label>PayPal یا Credit Card</Form.Label>
+                            <Form.Label className='my-1'>PayPal یا Credit Card</Form.Label>
                         </Row>
                     </Form.Group>
 

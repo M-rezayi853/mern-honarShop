@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import Message from '../../components/Message/Message';
 import Loader from '../../components/Loader/Loader';
 import { getDetailUser, updateDetailUser } from '../../redux/actions/userActions';
 import { USER_UPDATE_DETAIL_RESET } from '../../redux/constants/userConstants';
+import { listMyOrder } from '../../redux/actions/orderActions';
 
 const ProfileScreen = ({ history }) => {
     const [name, setName] = useState('');
@@ -25,13 +27,17 @@ const ProfileScreen = ({ history }) => {
     const userUpdateDetail = useSelector(state => state.userUpdateDetail);
     const { success } = userUpdateDetail;
 
+    const orderMyList = useSelector(state => state.orderMyList);
+    const { error: errorOrders, loading: loadingOrders, orders } = orderMyList;
+
     useEffect(() => {
         if(!userInfo) {
             history.push('/login');
         } else {
-            if(!user || success) {
+            if(!user || !user.name || success) {
                 dispatch({ type: USER_UPDATE_DETAIL_RESET });
                 dispatch(getDetailUser('profile'));
+                dispatch(listMyOrder());
             } else {
                 setName(user.name);
                 setEmail(user.email);
@@ -48,6 +54,15 @@ const ProfileScreen = ({ history }) => {
             dispatch(updateDetailUser({ id: user._id, name, email, password }));
         }
     }
+
+    // eslint-disable-next-line
+    String.prototype.toPersinaDigit= function() {
+        var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+        return this.replace(/[0-9]/g, function(w) {
+            return id[+w]
+        });
+    }
+
 
     return (
         <Row>
@@ -103,7 +118,7 @@ const ProfileScreen = ({ history }) => {
                     <Button
                         type='submit'
                         variant='info'
-                        className='py-2 px-3'
+                        className='py-2 mt-3 px-3'
                     >
                         به روز رسانی
                     </Button>
@@ -112,6 +127,41 @@ const ProfileScreen = ({ history }) => {
             
             <Col md={9}>
                 <h2>سفارشات من</h2>
+                {loadingOrders ? <Loader /> : errorOrders ? <Message>{errorOrders}</Message> : (
+                    <Table striped bordered hover responsive className='table-sm my-5 text-center'>
+                        <thead>
+                            <tr>
+                                <th>کد</th>
+                                <th>تاریخ</th>
+                                <th>قیمت کل</th>
+                                <th>تاریخ پرداخت</th>
+                                <th>تاریخ دریافت</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                            
+                        <tbody>
+                            {orders.map(order => (
+                                <tr key={order._id}>
+                                    <td>{`${order._id}`.toPersinaDigit()}</td>
+                                    <td>{`${order.createdAt.substring(0, 10)}`.toPersinaDigit()}</td>
+                                    <td>تومان {`${order.totalPrice},000`.toPersinaDigit()}</td>
+                                    <td>{order.isPaid ? `${order.paidAt.substring(0, 10)}`.toPersinaDigit() : (
+                                        <i className='fas fa-times' style={{color: 'red'}}></i>
+                                    )}</td>
+                                    <td>{order.isDelivered ? `${order.deliveredAt.substring(0, 10)}`.toPersinaDigit() : (
+                                        <i className='fas fa-times' style={{color: 'red'}}></i>
+                                    )}</td>
+                                    <td>
+                                        <LinkContainer to={`/order/${order._id}`}>
+                                            <Button size='sm' variant='light'>جزئیات</Button>
+                                        </LinkContainer>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                )}
             </Col>
         </Row>
     )

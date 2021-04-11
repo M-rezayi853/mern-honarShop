@@ -61,7 +61,7 @@ const CartScreen = ({ match, location, history }) => {
                             <ListGroup.Item key={item.product} className='my-2'>
                                 <Row className='d-flex align-items-center'>
                                     <Col md={2}>
-                                        <Image src={item.image} alt={item.name} fluid />
+                                        <Image src={item.image} alt={item.name} fluid rounded />
                                     </Col>
 
                                     <Col md={3}>

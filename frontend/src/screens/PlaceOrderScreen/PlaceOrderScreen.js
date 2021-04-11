@@ -89,9 +89,9 @@ const PlaceOrderScreen = ({ history}) => {
                                 <ListGroup variant='flush' className='my-3'>
                                     {cartItems.map((item, index) => (
                                         <ListGroup.Item key={index}>
-                                            <Row>
-                                                <Col md={1}>
-                                                    <Image src={item.image} alt={item.name} fluid />
+                                            <Row className='d-flex align-items-center text-center'>
+                                                <Col md={2}>
+                                                    <Image src={item.image} alt={item.name} fluid rounded />
                                                 </Col>
 
                                                 <Col>

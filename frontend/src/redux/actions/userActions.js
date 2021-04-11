@@ -16,6 +16,7 @@ import {
     USER_UPDATE_DETAIL_SUCCESS,
     USER_UPDATE_DETAIL_FAIL
 } from '../constants/userConstants';
+import { ORDER_MY_LIST_RESET } from '../constants/orderConstants';
 
 export const loginUser = (email, password) => async (dispatch) => {
     try {
@@ -48,6 +49,7 @@ export const loginUser = (email, password) => async (dispatch) => {
 export const logoutUser = () => async (dispatch) => {
     dispatch({ type: USER_LOGOUT });
     dispatch({ type: USER_DETAIL_RESET });
+    dispatch({ type: ORDER_MY_LIST_RESET });
 
     localStorage.removeItem('userInfo');
 }
