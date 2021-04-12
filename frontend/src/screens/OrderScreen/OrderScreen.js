@@ -70,7 +70,7 @@ const OrderScreen = ({ match, history }) => {
     }
 
     // eslint-disable-next-line
-    String.prototype.toPersinaDigit= function() {
+    String.prototype.toPersianDigit = function() {
         var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
         return this.replace(/[0-9]/g, function(w) {
             return id[+w]
@@ -81,7 +81,7 @@ const OrderScreen = ({ match, history }) => {
         <div className='orderScreen'>
             {loading ? <Loader /> : error ? <Message>{error}</Message> : (
                 <>
-                    <h4>سفارش با کد <span>{`${order._id}`.toPersinaDigit()}</span></h4>
+                    <h4>سفارش با کد <span>{`${order._id}`.toPersianDigit()}</span></h4>
                     <Row>
                         <Col md={8}>
                             <ListGroup variant='flush'>
@@ -112,7 +112,7 @@ const OrderScreen = ({ match, history }) => {
                                     </p>
 
                                     {order.isPaid 
-                                        ? <Message variant='success'>پرداخت شده در {`${order.paidAt}`.toPersinaDigit()}</Message>
+                                        ? <Message variant='success'>پرداخت شده در {`${order.paidAt}`.toPersianDigit()}</Message>
                                         : <Message>پرداخت نشده است</Message>
                                     }
                                 </ListGroup.Item>
@@ -135,7 +135,7 @@ const OrderScreen = ({ match, history }) => {
                                                         </Col>
         
                                                         <Col md={5}>
-                                                            تومان {`${item.qty * item.price},000`.toPersinaDigit()} = {`${item.qty}`.toPersinaDigit()} &lowast; {`${item.price},000`.toPersinaDigit()}
+                                                            تومان {`${item.qty * item.price},000`.toPersianDigit()} = {`${item.qty}`.toPersianDigit()} &lowast; {`${item.price},000`.toPersianDigit()}
                                                         </Col>
                                                     </Row>
                                                 </ListGroup.Item>
@@ -156,28 +156,28 @@ const OrderScreen = ({ match, history }) => {
                                     <ListGroup.Item>
                                         <Row>
                                             <Col>هزینه کالاها</Col>
-                                            <Col>تومان {`${order.itemsPrice},000`.toPersinaDigit()}</Col>
+                                            <Col>تومان {`${order.itemsPrice},000`.toPersianDigit()}</Col>
                                         </Row>
                                     </ListGroup.Item>
         
                                     <ListGroup.Item>
                                         <Row>
                                             <Col>هزینه پست</Col>
-                                            <Col>تومان {`${order.shippingPrice},000`.toPersinaDigit()}</Col>
+                                            <Col>تومان {`${order.shippingPrice},000`.toPersianDigit()}</Col>
                                         </Row>
                                     </ListGroup.Item>
         
                                     <ListGroup.Item>
                                         <Row>
                                             <Col>هزینه مالیات</Col>
-                                            <Col>تومان {`${order.taxPrice},000`.toPersinaDigit()}</Col>
+                                            <Col>تومان {`${order.taxPrice},000`.toPersianDigit()}</Col>
                                         </Row>
                                     </ListGroup.Item>
         
                                     <ListGroup.Item>
                                         <Row>
                                             <Col>جمع کل</Col>
-                                            <Col>تومان {`${order.totalPrice},000`.toPersinaDigit()}</Col>
+                                            <Col>تومان {`${order.totalPrice},000`.toPersianDigit()}</Col>
                                         </Row>
                                     </ListGroup.Item>
         

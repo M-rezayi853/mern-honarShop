@@ -26,6 +26,22 @@ const Header = () => {
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
                         <Nav className='mr-auto'>
+                            {userInfo && userInfo.isAdmin && (
+                                <NavDropdown title='ادمین سایت' id='adminmenu'>
+                                    <LinkContainer to='/admin/userlist'>
+                                        <NavDropdown.Item>کاربران</NavDropdown.Item>
+                                    </LinkContainer>
+                                
+                                    <LinkContainer to='#'>
+                                        <NavDropdown.Item>محصولات</NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to='#'>
+                                        <NavDropdown.Item>سفارشات</NavDropdown.Item>
+                                    </LinkContainer>
+                              </NavDropdown>
+                            )}
+
                             <LinkContainer to='/cart'>
                                 <Nav.Link><i className='fas fa-shopping-cart'></i> &nbsp;<span>لیست خرید</span></Nav.Link>
                             </LinkContainer>

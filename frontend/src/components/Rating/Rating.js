@@ -4,7 +4,7 @@ import './Rating.scss';
 
 const Rating = ({ value, text, color }) => {
     // eslint-disable-next-line
-    String.prototype.toPersinaDigit= function() {
+    String.prototype.toPersianDigit = function() {
         var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
         return this.replace(/[0-9]/g, function(w) {
             return id[+w]
@@ -70,7 +70,7 @@ const Rating = ({ value, text, color }) => {
             </span>
 
             <span className='rating rating__numReview'>
-                <strong>{String(text && text).toPersinaDigit()}</strong> نظر خریدارن
+                <strong>{String(text && text).toPersianDigit()}</strong> نظر خریدارن
             </span>
         </div>
     )

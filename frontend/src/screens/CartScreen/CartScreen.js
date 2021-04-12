@@ -43,7 +43,7 @@ const CartScreen = ({ match, location, history }) => {
     // };
 
     // eslint-disable-next-line
-    String.prototype.toPersinaDigit= function() {
+    String.prototype.toPersianDigit = function() {
         var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
         return this.replace(/[0-9]/g, function(w) {
             return id[+w]
@@ -71,7 +71,7 @@ const CartScreen = ({ match, location, history }) => {
                                     </Col>
 
                                     <Col md={2} className='cartScreen cartScreen__num'>
-                                        <span>{`${item.price},000`.toPersinaDigit()}&nbsp;</span> تومان
+                                        <span>{`${item.price},000`.toPersianDigit()}&nbsp;</span> تومان
                                     </Col>
 
                                     <Col md={2}>
@@ -107,8 +107,8 @@ const CartScreen = ({ match, location, history }) => {
                 <Card>
                     <ListGroup variant='flush' >
                         <ListGroup.Item className='py-5'>
-                            <h5 className='py-2'>جمع سبد خرید <span>{`${cartItems.reduce((acc, item) => acc + item.qty , 0)}`.toPersinaDigit()}</span> مورد</h5>
-                            <h5 className='py-1'><span>{`${cartItems.reduce((acc, item) => acc + item.qty * item.price , 0)},000`.toPersinaDigit()}&nbsp;</span> تومان</h5>
+                            <h5 className='py-2'>جمع سبد خرید <span>{`${cartItems.reduce((acc, item) => acc + item.qty , 0)}`.toPersianDigit()}</span> مورد</h5>
+                            <h5 className='py-1'><span>{`${cartItems.reduce((acc, item) => acc + item.qty * item.price , 0)},000`.toPersianDigit()}&nbsp;</span> تومان</h5>
                         </ListGroup.Item>
 
                         <ListGroup.Item>

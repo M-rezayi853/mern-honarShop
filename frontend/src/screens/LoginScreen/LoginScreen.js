@@ -39,7 +39,7 @@ const LoginScreen = ({ location, history }) => {
             {loading && <Loader />}
             <Form onSubmit={submitHandler} className='my-5'>
                 <Form.Group controlId='email'>
-                    <Form.Label>آدرس ایمیل</Form.Label>
+                    <Form.Label>ایمیل</Form.Label>
                     <Form.Control
                         type='email'
                         placeholder='ایمیل را وارد کنید'

@@ -26,7 +26,7 @@ const ProductScreen = ({ match, history }) => {
     }
 
     // eslint-disable-next-line
-    String.prototype.toPersinaDigit= function() {
+    String.prototype.toPersianDigit = function() {
         var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
         return this.replace(/[0-9]/g, function(w) {
             return id[+w]
@@ -35,7 +35,7 @@ const ProductScreen = ({ match, history }) => {
 
     return (
         <div className='productScreen'>
-            <Link className='btn btn-light py-3 mb-3' to='/'>برگشت به صفحه قبل</Link>
+            <Link className='btn btn-light py-2 mb-3' to='/'>برگشت به صفحه قبل</Link>
             
             {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
                 <Row>
@@ -53,7 +53,7 @@ const ProductScreen = ({ match, history }) => {
                             <Rating value={product.rating} text={product.numReviews} />
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            قیمت: <span>{`${product.price},000`.toPersinaDigit()}</span> تومان
+                            قیمت: <span>{`${product.price},000`.toPersianDigit()}</span> تومان
                         </ListGroup.Item>
                         <ListGroup.Item>
                             توضیحات محصول: {product.description}
@@ -69,7 +69,7 @@ const ProductScreen = ({ match, history }) => {
                                             قیمت:
                                         </Col>
                                         <Col>
-                                            <span>{`${product.price},000`.toPersinaDigit()}</span> تومان
+                                            <span>{`${product.price},000`.toPersianDigit()}</span> تومان
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>

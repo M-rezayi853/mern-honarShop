@@ -7,7 +7,7 @@ import './Product.scss';
 
 const Product = ({ product }) => {
     // eslint-disable-next-line
-    String.prototype.toPersinaDigit= function() {
+    String.prototype.toPersianDigit = function() {
         var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
         return this.replace(/[0-9]/g, function(w) {
             return id[+w]
@@ -32,7 +32,7 @@ const Product = ({ product }) => {
                 </Card.Text>
 
                 <Card.Text as='h6' className='text-center'>
-                    <span>{`${product.price},000`.toPersinaDigit()}</span> تومان
+                    <span>{`${product.price},000`.toPersianDigit()}</span> تومان
                 </Card.Text>
             </Card.Body>
         </Card>

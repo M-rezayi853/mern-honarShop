@@ -56,7 +56,7 @@ const ProfileScreen = ({ history }) => {
     }
 
     // eslint-disable-next-line
-    String.prototype.toPersinaDigit= function() {
+    String.prototype.toPersianDigit = function() {
         var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
         return this.replace(/[0-9]/g, function(w) {
             return id[+w]
@@ -143,13 +143,13 @@ const ProfileScreen = ({ history }) => {
                         <tbody>
                             {orders.map(order => (
                                 <tr key={order._id}>
-                                    <td>{`${order._id}`.toPersinaDigit()}</td>
-                                    <td>{`${order.createdAt.substring(0, 10)}`.toPersinaDigit()}</td>
-                                    <td>تومان {`${order.totalPrice},000`.toPersinaDigit()}</td>
-                                    <td>{order.isPaid ? `${order.paidAt.substring(0, 10)}`.toPersinaDigit() : (
+                                    <td>{`${order._id}`.toPersianDigit()}</td>
+                                    <td>{`${order.createdAt.substring(0, 10)}`.toPersianDigit()}</td>
+                                    <td>تومان {`${order.totalPrice},000`.toPersianDigit()}</td>
+                                    <td>{order.isPaid ? `${order.paidAt.substring(0, 10)}`.toPersianDigit() : (
                                         <i className='fas fa-times' style={{color: 'red'}}></i>
                                     )}</td>
-                                    <td>{order.isDelivered ? `${order.deliveredAt.substring(0, 10)}`.toPersinaDigit() : (
+                                    <td>{order.isDelivered ? `${order.deliveredAt.substring(0, 10)}`.toPersianDigit() : (
                                         <i className='fas fa-times' style={{color: 'red'}}></i>
                                     )}</td>
                                     <td>

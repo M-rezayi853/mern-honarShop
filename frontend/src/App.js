@@ -14,6 +14,8 @@ import ShippingScreen from './screens/ShippingScreen/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen/OrderScreen';
+import UserListScreen from './screens/UserListScreen/UserListScreen';
+import UserEditScreen from './screens/UserEditScreen/UserEditScreen';
 import './App.scss';
 import './sass/custom.scss';
 
@@ -33,6 +35,8 @@ function App() {
           <Route path='/payment' component={PaymentScreen} />
           <Route path='/placeorder' component={PlaceOrderScreen} />
           <Route path='/order/:id' component={OrderScreen} />
+          <Route path='/admin/userlist' component={UserListScreen} />
+          <Route path='/admin/user/:id/edit' component={UserEditScreen} />
         </Container>
       </main>
       <Footer />

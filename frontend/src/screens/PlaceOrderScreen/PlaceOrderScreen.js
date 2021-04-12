@@ -53,7 +53,7 @@ const PlaceOrderScreen = ({ history}) => {
     }
 
     // eslint-disable-next-line
-    String.prototype.toPersinaDigit= function() {
+    String.prototype.toPersianDigit = function() {
         var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
         return this.replace(/[0-9]/g, function(w) {
             return id[+w]
@@ -101,7 +101,7 @@ const PlaceOrderScreen = ({ history}) => {
                                                 </Col>
 
                                                 <Col md={5}>
-                                                    تومان {`${item.qty * item.price},000`.toPersinaDigit()} = {`${item.qty}`.toPersinaDigit()} &lowast; {`${item.price},000`.toPersinaDigit()}
+                                                    تومان {`${item.qty * item.price},000`.toPersianDigit()} = {`${item.qty}`.toPersianDigit()} &lowast; {`${item.price},000`.toPersianDigit()}
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
@@ -122,28 +122,28 @@ const PlaceOrderScreen = ({ history}) => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>هزینه کالاها</Col>
-                                    <Col>تومان {`${cart.itemsPrice},000`.toPersinaDigit()}</Col>
+                                    <Col>تومان {`${cart.itemsPrice},000`.toPersianDigit()}</Col>
                                 </Row>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
                                 <Row>
                                     <Col>هزینه پست</Col>
-                                    <Col>تومان {`${cart.shippingPrice},000`.toPersinaDigit()}</Col>
+                                    <Col>تومان {`${cart.shippingPrice},000`.toPersianDigit()}</Col>
                                 </Row>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
                                 <Row>
                                     <Col>هزینه مالیات</Col>
-                                    <Col>تومان {`${cart.taxPrice},000`.toPersinaDigit()}</Col>
+                                    <Col>تومان {`${cart.taxPrice},000`.toPersianDigit()}</Col>
                                 </Row>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
                                 <Row>
                                     <Col>جمع کل</Col>
-                                    <Col>تومان {`${cart.totalPrice},000`.toPersinaDigit()}</Col>
+                                    <Col>تومان {`${cart.totalPrice},000`.toPersianDigit()}</Col>
                                 </Row>
                             </ListGroup.Item>
 
