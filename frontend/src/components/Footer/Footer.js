@@ -6,7 +6,7 @@ import './Footer.scss';
 
 const Footer = () => {
     return (
-        <footer className='footer'>
+        <footer className='footer mt-5'>
             <Container>
                 <Row className='text-center'>
                     <Col><Link to='#'>نحوه ثبت سفارش</Link></Col>

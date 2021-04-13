@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, ListGroup, Image, Row, Col } from 'react-bootstrap';
+import { Card, ListGroup, Image, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -7,9 +7,8 @@ import { PayPalButton } from 'react-paypal-button-v2';
 
 import Message from '../../components/Message/Message';
 import Loader from '../../components/Loader/Loader';
-import { detailOrder, payOrder } from '../../redux/actions/orderActions';
-import { ORDER_PAY_RESET } from '../../redux/constants/orderConstants';
-
+import { detailOrder, payOrder, deliverOrder } from '../../redux/actions/orderActions';
+import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../../redux/constants/orderConstants';
 import './OrderScreen.scss';
 
 const OrderScreen = ({ match, history }) => {
@@ -27,6 +26,9 @@ const OrderScreen = ({ match, history }) => {
 
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
+
+    const orderDeliver = useSelector(state => state.orderDeliver);
+    const { loading: loadingDeliver, success: successDeliver  } = orderDeliver;
 
     if(!loading) {
         order.itemsPrice = order.orderItems.reduce((acc, item) => acc + item.qty * item.price, 0);
@@ -50,8 +52,9 @@ const OrderScreen = ({ match, history }) => {
             document.body.appendChild(script);
         }
 
-        if(!order || order._id !== orderId || successPay) {
+        if(!order || order._id !== orderId || successPay || successDeliver) {
             dispatch({ type: ORDER_PAY_RESET });
+            dispatch({ type: ORDER_DELIVER_RESET });
 
             dispatch(detailOrder(orderId));
         } else if(!order.isPaid) {
@@ -61,12 +64,16 @@ const OrderScreen = ({ match, history }) => {
                 setSdkReady(true);
             }
         }
-    }, [userInfo, history, order, dispatch, orderId, successPay]);
+    }, [userInfo, history, order, dispatch, orderId, successPay, successDeliver]);
 
     const successPaymentHandler = (paymentResult) => {
         console.log(paymentResult);
 
         dispatch(payOrder(orderId, paymentResult));
+    }
+
+    const deliverOrderHandler = () => {
+        dispatch(deliverOrder(orderId)); 
     }
 
     // eslint-disable-next-line
@@ -192,6 +199,20 @@ const OrderScreen = ({ match, history }) => {
                                             )}
                                         </ListGroup.Item>
                                     )}
+
+                                    
+                                    {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                                        <ListGroup.Item>
+                                            <Button
+                                                variant='info'
+                                                block
+                                                onClick={deliverOrderHandler}
+                                            >
+                                                تحویل داده شده است
+                                            </Button>
+                                        </ListGroup.Item>
+                                    )}
+                                    {loadingDeliver && <Loader />}
                                 </ListGroup>
                             </Card>
                         </Col>

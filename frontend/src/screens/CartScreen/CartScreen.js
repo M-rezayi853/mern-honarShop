@@ -53,7 +53,7 @@ const CartScreen = ({ match, location, history }) => {
     return (
         <Row className='my-5 cartScreen'>
             <Col md={8}>
-                <h2>سبد خرید</h2>
+                <h2 className='mb-5'>سبد خرید</h2>
 
                 {cartItems.length === 0 ? <Message variant='info'>سبد خرید شما خالی است</Message> : (
                     <ListGroup variant='flush' className='text-center my-3'>

@@ -32,11 +32,11 @@ const Header = () => {
                                         <NavDropdown.Item>کاربران</NavDropdown.Item>
                                     </LinkContainer>
                                 
-                                    <LinkContainer to='#'>
+                                    <LinkContainer to='/admin/productlist'>
                                         <NavDropdown.Item>محصولات</NavDropdown.Item>
                                     </LinkContainer>
 
-                                    <LinkContainer to='#'>
+                                    <LinkContainer to='/admin/orderlist'>
                                         <NavDropdown.Item>سفارشات</NavDropdown.Item>
                                     </LinkContainer>
                               </NavDropdown>
