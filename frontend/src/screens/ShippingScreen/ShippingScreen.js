@@ -25,7 +25,7 @@ const ShippingScreen = ({ history }) => {
     }
 
     return (
-        <>
+        <div className='shippingScreen'>
             <CheckoutSteps step1 step2 />
 
             <FormContainer>
@@ -81,7 +81,7 @@ const ShippingScreen = ({ history }) => {
                     </Button>
                 </Form>
             </FormContainer>
-        </>
+        </div>
     )
 }
 

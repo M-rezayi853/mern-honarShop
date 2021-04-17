@@ -135,7 +135,7 @@ const OrderScreen = ({ match, history }) => {
                                                             <Image src={item.image} alt={item.name} fluid rounded />
                                                         </Col>
         
-                                                        <Col>
+                                                        <Col className='my-3'>
                                                             <Link to={`/product/${item.product}`}>
                                                                 {item.name}
                                                             </Link>

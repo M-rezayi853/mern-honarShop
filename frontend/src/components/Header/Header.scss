@@ -1,4 +1,27 @@
 
 .header {
-    box-shadow: 0 .3rem .5rem rgba(0,0,0, 0.2);
+
+    &__nav {
+        box-shadow: 0 .3rem .5rem rgba(0,0,0, 0.2);
+        margin-bottom: 3rem;
+
+        @media (max-width: 768px) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__admin {
+        text-align: center;
+    }
+
+    &__link {
+        text-align: right !important;
+        font-size: 13px;
+    }
+
+
+    @media (max-width: 768px) {
+        margin-bottom: 1rem;
+    }
+
 }

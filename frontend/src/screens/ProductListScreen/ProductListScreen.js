@@ -7,12 +7,16 @@ import Message from '../../components/Message/Message';
 import Loader from '../../components/Loader/Loader';
 import { listProduct, createProduct, deleteProduct } from '../../redux/actions/productActions';
 import { PRODUCT_CREATE_RESET } from '../../redux/constants/productConstants';
+import Paginate from '../../components/Paginate/Paginate';
+import './ProductListScreen.scss';
 
-const ProductListScreen = ({ history }) => {
+const ProductListScreen = ({ history, match }) => {
+    const pageNumber = match.params.pageNumber || 1;
+
     const dispatch = useDispatch();
 
     const productList = useSelector(state => state.productList);
-    const { error, loading, products } = productList;
+    const { error, loading, products, page, pages } = productList;
 
     const productCreate = useSelector(state => state.productCreate);
     const { error: errorCreated, loading: loadingCreated, success: successCreated, product: productCreated } = productCreate;
@@ -33,10 +37,10 @@ const ProductListScreen = ({ history }) => {
         if(successCreated) {
             history.push(`/admin/product/${productCreated._id}/edit`);
         } else {
-            dispatch(listProduct());
+            dispatch(listProduct('', pageNumber));
         }
         
-    }, [dispatch, userInfo, successCreated, history, productCreated, successDelete]);
+    }, [dispatch, userInfo, successCreated, history, productCreated, successDelete, pageNumber]);
 
     const createProductHandler = () => {
         dispatch(createProduct());
@@ -57,8 +61,8 @@ const ProductListScreen = ({ history }) => {
     }
 
     return (
-        <>
-            <Row className='mb-5'>
+        <div className='productListScreen'>
+            <Row className='mb-3'>
                 <h2>محصولات</h2>
                 <Button
                     className='mr-auto px-3'
@@ -72,7 +76,7 @@ const ProductListScreen = ({ history }) => {
             {loadingCreated && <Loader />}
             {errorCreated && <Message>{errorCreated}</Message>}
             {loading ? <Loader /> : error ? <Message>{error}</Message> : (
-                <Row>
+                <>
                     <Table striped bordered hover responsive className='table-sm text-center mt-2 mb-5'>
                         <thead>
                             <tr>
@@ -109,10 +113,12 @@ const ProductListScreen = ({ history }) => {
                                 </tr>
                             ))}
                         </tbody>
-                    </Table>    
-                </Row>            
+                    </Table>
+
+                    <Paginate page={page} pages={pages} isAdmin={true} />
+                </>            
             )}
-        </>
+        </div>
     )
 }
 

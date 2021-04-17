@@ -37,7 +37,7 @@ const OrderListScreen = ({ history }) => {
             <h2>سفارشات</h2>
 
             {loading ? <Loader /> : error ? <Message>{error}</Message> : (
-                <Table striped hover responsive bordered className='table-sm text-center my-5'>
+                <Table striped hover responsive bordered className='table-sm text-center my-3'>
                     <thead>
                         <tr>
                             <th>شناسه سفارش</th>

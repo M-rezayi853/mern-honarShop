@@ -45,7 +45,7 @@ const products = [
     },
     {
         // _id: '5',
-        name: 'بشقاب مینکاری',
+        name: 'بشقاب میناکاری',
         image: '/images/mina-1.jpeg',
         description: 'بشقاب میناکاری طرح زینتی مخصوص دکوراسیون منزل',
         category: 'میناکاری',

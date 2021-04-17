@@ -32,6 +32,17 @@ $theme-colors: (
 
 .form-control {
   box-shadow: 0 .2rem .5rem rgba(204, 204, 204, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 13px !important;
+  }
+}
+
+.btn {
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 13px !important;
+  }
 }
 
 /* -------end customization-------- */

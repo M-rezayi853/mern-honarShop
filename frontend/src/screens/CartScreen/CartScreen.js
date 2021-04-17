@@ -60,7 +60,7 @@ const CartScreen = ({ match, location, history }) => {
                         {cartItems.map(item => (
                             <ListGroup.Item key={item.product} className='my-2'>
                                 <Row className='d-flex align-items-center'>
-                                    <Col md={2}>
+                                    <Col md={2} className='cartScreen cartScreen__img'>
                                         <Image src={item.image} alt={item.name} fluid rounded />
                                     </Col>
 
@@ -70,7 +70,7 @@ const CartScreen = ({ match, location, history }) => {
                                         </Link>
                                     </Col>
 
-                                    <Col md={2} className='cartScreen cartScreen__num'>
+                                    <Col md={2} className='cartScreen cartScreen__name'>
                                         <span>{`${item.price},000`.toPersianDigit()}&nbsp;</span> تومان
                                     </Col>
 

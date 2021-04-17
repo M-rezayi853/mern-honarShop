@@ -1,2 +1,11 @@
 @import '../../sass/variables';
 
+.homeScreen {
+    
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 25px;
+            text-align: center;
+        }
+    }
+}

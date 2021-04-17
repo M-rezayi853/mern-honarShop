@@ -70,7 +70,7 @@ const Rating = ({ value, text, color }) => {
             </span>
 
             <span className='rating rating__numReview'>
-                <strong>{String(text && text).toPersianDigit()}</strong> نظر خریدارن
+                {text && <strong>{`${text}`.toPersianDigit()}&nbsp; نظر خریداران</strong>}
             </span>
         </div>
     )
