@@ -1,23 +1,23 @@
-## mern-honarShop
-<h3>for using:</h3>
+# mern-honarShop
+### for using:
 <h5>clone or download Zip file the project.</h5>
 <h5>installation with ($ npm install or $ yarn) in terminal first in root then in frontend folder.</h5>
 
-in root folder:
+#### in root folder:
 <h5>(npm run server) for start backend.</h5>
 <h5>(npm run client) for start frontend.</h5>
 <h5>(npm run dev) for start frontend and backend concurrently in development.</h5>
 
 ### Sample User Logins
 
-admin@example.com (Admin)
-qwerty
+<p>admin@example.com (Admin)<p>
+<p>password: qwerty<p>
 
-mahdi@example.com (Customer)
-123456
+<p>mahdi@example.com (Customer)</p>
+<p>password: 123456</p>
 
-ben@example.com (Customer)
-123456
+<p>ben@example.com (Customer)</p>
+<p>passowrd: 123456</p>
 
 ### Import data
 npm run data:import
@@ -28,10 +28,9 @@ npm run data:destroy
 ### Env Variables
 Create a .env file in then root and add the following
 
-NODE_ENV = development
-PORT = 5000
-MONGO_URI = your mongodb uri
-JWT_SECRET = 'abc123'
-PAYPAL_CLIENT_ID = your paypal client id
-
+NODE_ENV = development<br/>
+PORT = 5000<br/>
+MONGO_URI = your mongodb uri<br/>
+JWT_SECRET = 'madi1234'<br/>
+PAYPAL_CLIENT_ID = your paypal client id<br/>
 
