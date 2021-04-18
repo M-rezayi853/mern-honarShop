@@ -1,5 +1,5 @@
 # mern-honarShop
-### for using:
+### For using:
 <h5>clone or download Zip file the project.</h5>
 <h5>installation with ($ npm install or $ yarn) in terminal first in root then in frontend folder.</h5>
 
