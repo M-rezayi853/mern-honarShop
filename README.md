@@ -1,4 +1,10 @@
 # mern-honarShop
+
+## *Implemented with*: 
+  - Backend (Express - Mongoose & MongoDB)
+  - Frontend (Reactjs - Redux & Redux Thunk - Bootstrap - Axios)
+  - Responsive
+
 ### For using:
 <h5>clone or download Zip file the project.</h5>
 <h5>installation with ($ npm install or $ yarn) in terminal first in root then in frontend folder.</h5>
